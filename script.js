@@ -309,4 +309,46 @@ const boxes = document.querySelectorAll('.box')
 const all = [h, ...boxes]
 Array.from(all).forEach(cur => cur.style.color = 'purple')
 
+// Rest parameters
+
+// ES5
+function isFullAge5 () {
+    var argsArr = Array.prototype.slice.call(arguments)
+    argsArr.forEach(function(cur) {
+        console.log((2016 -cur) >= 18) 
+    })
+}
+
+isFullAge5(1990, 1999, 1965)
+isFullAge5(1990, 1999, 2016, 1987)
+
+// ES6
+function isFullAge6(...years) {
+    years.forEach(cur => console.log((2016 -cur) >= 18))
+}
+
+isFullAge6(1990, 1999, 1965, 2016, 1987)
+
+// default parameters
+
+// ES5
+function SmithFunction(firstName, yearOfBirth, lastName, nationality) {
+    lastName === undefined ? lastName = 'Smith' : lastName
+    this.firstName = firstName
+    this.lastName = lastName
+    this.yearOfBirth = yearOfBirth
+    this.nationality = nationality
+}
+
+var john = new SmithFunction('John', 1990)
+
+
+// ES6
+function SmithFunction(firstName, yearOfBirth, lastName = 'Smith', nationality = 'American') {
+    this.firstName = firstName
+    this.lastName = lastName
+    this.yearOfBirth = yearOfBirth
+    this.nationality = nationality
+}
+
 
